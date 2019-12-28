@@ -2,7 +2,7 @@
 
 ***Docker image containing JupyterLab, several extensions, and additional Python packages***
 
-I use this to jump-start my notebook projects.
+I use this image to jump-start my notebook projects.
 
 Built from `jupyter/scipy-notebook` base image, extended by the following packages:
 
