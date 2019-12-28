@@ -1,6 +1,5 @@
 
-ARG BASE_CONTAINER=jupyter/scipy-notebook:7a0c7325e470
-FROM $BASE_CONTAINER
+FROM jupyter/scipy-notebook:7a0c7325e470
 
 LABEL maintainer="dynobo@mailbox.org"
 
