@@ -24,10 +24,10 @@ RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter@0.7.0 && 
 #     jupyter labextension install @krassowski/jupyterlab-lsp@0.6.1
 
 # Config files
-COPY --chown=$NB_USER:users home /home/$NB_USER/
+COPY --chown=jovyan:users home /home/jovyan/
 
 # Cleanup 
 # - /work was only needed for backward-compatibility
-RUN rm -rf /home/$NB_USER/work && \
+RUN rm -rf /home/jovyan/work && \
     conda clean --all --force-pkgs-dirs --yes && \
     npm cache clean --force
