@@ -2,6 +2,8 @@
 ARG BASE_CONTAINER=jupyter/scipy-notebook:7a0c7325e470
 FROM $BASE_CONTAINER
 
+LABEL maintainer="dynobo@mailbox.org"
+
 # Remove work dir (only needed for backward-compatibility)
 RUN rm -rf /home/$NB_USER/work
 

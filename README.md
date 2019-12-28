@@ -1,6 +1,6 @@
 # docker-jupyter-extended
 
-***Docker image containing JupyterLab, several extensions, and additional Python packages*** 
+***Docker image containing JupyterLab, several extensions, and additional Python packages***
 
 <p align="center">
 <a href="https://hub.docker.com/r/dynobo/docker-jupyter-extended/"><img alt="Docker: pulls" src="https://img.shields.io/docker/pulls/dynobo/docker-jupyter-extended.svg?maxAge=2592000?style=flat-square"></a>
