@@ -4,6 +4,7 @@
 
 <p align="center">
 <a href="https://hub.docker.com/r/dynobo/docker-jupyter-extended/"><img alt="Docker: pulls" src="https://img.shields.io/docker/pulls/dynobo/docker-jupyter-extended.svg?maxAge=2592000?style=flat-square"></a>
+<a href="https://microbadger.com/images/dynobo/docker-jupyter-extended"><img alt="Image Metadata" src="https://images.microbadger.com/badges/image/dynobo/docker-jupyter-extended.svg"></a>
 <a href="https://opensource.org/licenses/mit-license.php"><img alt="License: MIT" src="https://badges.frapsoft.com/os/mit/mit.png?v=103"></a>
 </p>
 
