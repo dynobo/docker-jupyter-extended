@@ -1,10 +1,15 @@
 # docker-jupyter-extended
 
-***Docker image containing JupyterLab, several extensions, and additional Python packages***
+***Docker image containing JupyterLab, several extensions, and additional Python packages*** 
 
-I use this image to jump-start my notebook projects.
+<p align="center">
+<a href="https://hub.docker.com/r/dynobo/docker-jupyter-extended/"><img alt="Docker: pulls" src="https://img.shields.io/docker/pulls/dynobo/docker-jupyter-extended.svg?maxAge=2592000?style=flat-square"></a>
+<a href="https://opensource.org/licenses/mit-license.php"><img alt="License: MIT" src="https://badges.frapsoft.com/os/mit/mit.png?v=103"></a>
+</p>
 
-Built from `jupyter/scipy-notebook` base image, extended by the following packages:
+I use this image to jump-start data-related notebooks for experimental and educational purposes.
+
+Built from [`jupyter/scipy-notebook`](https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook) base image, extended by the following packages:
 
 ## JupyterLab Extensions
 
