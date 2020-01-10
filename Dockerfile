@@ -2,7 +2,7 @@ FROM jupyter/scipy-notebook:7a0c7325e470
 
 LABEL maintainer="dynobo@mailbox.org"
 
-RUN conda install --yes black flake8 keras
+RUN conda install --yes black flake8
 
 # Jupyter lab extensions
 RUN jupyter labextension install \
@@ -16,9 +16,6 @@ RUN jupyter labextension install \
 RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter@0.7.0 && \
     conda install --yes jupyterlab_code_formatter=0.7.0 && \
     jupyter serverextension enable --py jupyterlab_code_formatter
-
-# Gameboy emulator
-RUN pip install gym-retro
 
 # Will replace "jupyterlab_go_to_definition" and "jupyterlab-flake8",
 # but not yet stable enough
