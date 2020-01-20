@@ -8,7 +8,7 @@ RUN conda install --yes black flake8 jupyterlab=1.2.5
 RUN jupyter labextension install \
     @ijmbarr/jupyterlab_spellchecker@0.1.5 \
     @jupyterlab/toc@2.0.0-rc.0 \
-    @lckr/jupyterlab_variableinspector@0.3.0 
+    @lckr/jupyterlab_variableinspector@0.3.0 --no-build
 #    @krassowski/jupyterlab_go_to_definition@0.7.1 \
 #    jupyterlab-flake8@0.4.0 \
 
