@@ -13,8 +13,8 @@ RUN jupyter labextension install \
 #    jupyterlab-flake8@0.4.0 \
 
 # Autoformatter (commands need to be in correct order)
-RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter@0.7.0 && \
-    conda install --yes jupyterlab_code_formatter=0.7.0 && \
+RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter@1.0.3 && \
+    conda install --yes jupyterlab_code_formatter=1.0.3 && \
     jupyter serverextension enable --py jupyterlab_code_formatter
 
 # Will replace "jupyterlab_go_to_definition" and "jupyterlab-flake8",
