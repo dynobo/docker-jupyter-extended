@@ -2,7 +2,8 @@ FROM jupyter/scipy-notebook:7a0c7325e470
 
 LABEL maintainer="dynobo@mailbox.org"
 
-RUN conda install --yes black flake8 jupyterlab=1.2.5
+RUN conda install --yes black flake8 jupyterlab=1.2.5 rope=0.14.0
+RUN conda install -c gwerbin pyls-black=0.3.0
 
 # Jupyter lab extensions
 RUN jupyter labextension install \
