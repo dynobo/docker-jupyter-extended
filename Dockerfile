@@ -2,27 +2,30 @@ FROM jupyter/scipy-notebook:7a0c7325e470
 
 LABEL maintainer="dynobo@mailbox.org"
 
-RUN conda install --yes black flake8 jupyterlab=1.2.5 rope=0.14.0
+# Conda Packages
+RUN conda install --yes \
+    black \
+    flake8 \
+    jupyterlab=1.2.5 \
+    rope=0.14.0 \
+    jupyterlab_code_formatter=1.0.3 \
+    python-language-server
 RUN conda install -c gwerbin pyls-black=0.3.0
+
+# PyPi Packages
+RUN pip install --pre jupyter-lsp
 
 # Jupyter lab extensions
 RUN jupyter labextension install \
     @ijmbarr/jupyterlab_spellchecker@0.1.5 \
     @jupyterlab/toc@2.0.0-rc.0 \
-    @lckr/jupyterlab_variableinspector@0.3.0 --no-build
-#    @krassowski/jupyterlab_go_to_definition@0.7.1 \
-#    jupyterlab-flake8@0.4.0 \
+    @lckr/jupyterlab_variableinspector@0.3.0 \
+    @ryantam626/jupyterlab_code_formatter@1.0.3 \
+    @krassowski/jupyterlab-lsp@0.7.1 \
+    --no-build
 
 # Autoformatter (commands need to be in correct order)
-RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter@1.0.3 --no-build && \
-    conda install --yes jupyterlab_code_formatter=1.0.3 && \
-    jupyter serverextension enable --py jupyterlab_code_formatter
-
-# Will replace "jupyterlab_go_to_definition" and "jupyterlab-flake8",
-# but not yet stable enough. Needs Jupyterlab >=1.2.4 !
-RUN conda install --yes python-language-server && \
-    pip install --pre jupyter-lsp && \
-    jupyter labextension install @krassowski/jupyterlab-lsp@0.7.1 --no-build
+RUN jupyter serverextension enable --py jupyterlab_code_formatter
 
 # Rebuild Jupyter lab
 RUN jupyter lab build
