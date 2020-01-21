@@ -10,10 +10,9 @@ RUN conda install --yes \
     rope=0.14.0 \
     jupyterlab_code_formatter=1.0.3 \
     python-language-server
-RUN conda install -c gwerbin pyls-black=0.3.0
 
 # PyPi Packages
-RUN pip install --pre jupyter-lsp
+RUN pip install --pre jupyter-lsp pyls-black
 
 # Jupyter lab extensions
 RUN jupyter labextension install \
