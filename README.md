@@ -15,7 +15,6 @@ Built from [`jupyter/scipy-notebook`](https://github.com/jupyter/docker-stacks/t
 ## JupyterLab Extensions
 
 - `@ijmbarr/jupyterlab_spellchecker` (en_US spell checker)
-- `@krassowski/jupyterlab-lsp@0.7.1` (Language Server for linting, refactoring, autocomplete)
 - `@ryantam626/jupyterlab_code_formatter` (Auto code formatting)
 - `@jupyterlab/toc` (Table of contents)
 - `@lckr/jupyterlab_variableinspector` (Live view of program variables)
@@ -23,5 +22,3 @@ Built from [`jupyter/scipy-notebook`](https://github.com/jupyter/docker-stacks/t
 ## Python Libraries
 
 - `black` (Formatter)
-- `flake8` (Linter)
-- `rope` (Refactoring)
