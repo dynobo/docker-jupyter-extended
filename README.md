@@ -27,12 +27,13 @@ Built from official [`python:3.7-slim`](https://hub.docker.com/_/python/) base i
 
 ## Build and run with Docker
 
-- Open in Browser: <http://127.0.0.1:8888>
-- Password is: `notebooks`
+- `docker build -t docker-jupyter-extended:0.3 .`
+- `docker run --rm -it -p 8888:8888/tcp docker-jupyter-extended:0.3`
+- Open link printed in console in Browser: <http://127.0.0.1:8888/?token=8f0b0...>
 
 ## Development
 
-**Clone, build and test:**
+**Clone and build:**
 
 ```sh
 git clone https://github.com/dynobo/docker-jupyter-extended.git
