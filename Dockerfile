@@ -13,15 +13,17 @@ FROM builder AS jupyter-extender
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash && \
     echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get -y -q install nodejs
-RUN /venv/bin/pip install \
+RUN /venv/bin/pip install --pre \
     jupyterlab==2.0.1 \
     ipywidgets==7.5.1 \
-    jupyterlab_code_formatter==1.2.2
+    jupyterlab_code_formatter==1.2.2 \
+    black==19.10.b0
 RUN /venv/bin/jupyter labextension install \
     @jupyter-widgets/jupyterlab-manager@2.0 \
     @jupyterlab/toc@3.0.0 \
     @ijmbarr/jupyterlab_spellchecker@0.1.6 \
     @ryantam626/jupyterlab_code_formatter@1.2.2 \
+    @lckr/jupyterlab_variableinspector@0.3 \
     --no-build
 RUN /venv/bin/jupyter serverextension enable --py jupyterlab_code_formatter
 RUN /venv/bin/jupyter lab build
