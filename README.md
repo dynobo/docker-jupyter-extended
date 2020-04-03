@@ -27,7 +27,7 @@ Built from official [`python:3.7-slim`](https://hub.docker.com/_/python/) base i
 
 ## Build and run with Docker
 
-- Open in Browser: http://127.0.0.1:8888
+- Open in Browser: <http://127.0.0.1:8888>
 - Password is: `notebooks`
 
 ## Development
@@ -46,5 +46,4 @@ make run
 ```sh
 git tag <VERSION>
 git push --tags
-make push
 ```
