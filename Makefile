@@ -1,8 +1,8 @@
 # The binary to build (just the basename).
-MODULE := notebooks
+MODULE := docker-jupyter-extended
 
 # Where to push the docker image.
-REGISTRY ?= docker.pkg.github.com/dynobo/docker-jupyter-extended
+REGISTRY ?= dynobo
 
 IMAGE := $(REGISTRY)/$(MODULE)
 
@@ -22,10 +22,13 @@ build:
 	    -e 's|{VERSION}|$(TAG)|g'        \
 	    Dockerfile | docker build -t $(IMAGE):$(TAG) -f- .
 
-# Example: make push VERSION=0.0.2
-push: build-prod
+run:
+	@echo "Starting $(IMAGE):$(TAG):\n"
+	@docker run $(IMAGE):$(TAG)
+
+push: build
 	@echo "\n${BLUE}Pushing image to GitHub Docker Registry...${NC}\n"
-	@docker push $(IMAGE):$(VERSION)
+	@docker push $(IMAGE):$(TAG)
 
 version:
 	@echo $(TAG)

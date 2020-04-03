@@ -32,8 +32,8 @@ Built from official [`python:3.7-slim`](https://hub.docker.com/_/python/) base i
 ```sh
 git clone https://github.com/dynobo/docker-jupyter-extended.git
 cd docker-jupyter-extended
-docker build -t jupext:<VERSION> .
-docker run jupext:<VERSION>
+make build
+make run
 ```
 
 **Publish:**
@@ -41,5 +41,5 @@ docker run jupext:<VERSION>
 ```sh
 git tag <VERSION>
 git push --tags
-docker push dynobo/docker-jupyter-extended:<VERSION>
+make push
 ```
