@@ -1,0 +1,12 @@
+{
+    "@jupyterlab/extensionmanager-extension:plugin": {
+        "enabled": true
+    },
+    "@ryantam626/jupyterlab_code_formatter:settings": {
+        "preferences": {
+            "default_formatter": {
+                "python": "black"
+            }
+        }
+    }
+}
