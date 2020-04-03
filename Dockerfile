@@ -1,33 +1,36 @@
-FROM jupyter/scipy-notebook:7a0c7325e470
+FROM python:3.7-slim AS builder
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends --yes \
+    python3-venv \ 
+    libpython3-dev \
+    gcc \ 
+    apt-utils dialog \
+    curl vim
+RUN python3 -m venv /venv && \
+    /venv/bin/pip install --upgrade pip
 
-LABEL maintainer="dynobo@mailbox.org"
-
-# Conda Packages
-RUN conda install --yes \
-    black=19.10b0 \
-    jupyterlab=1.2.5 \
-    jupyterlab_code_formatter=1.0.3 
-
-# Jupyter lab extensions
-RUN jupyter labextension install \
-    @ijmbarr/jupyterlab_spellchecker@0.1.5 \
-    @jupyterlab/toc@2.0.0-rc.0 \
-    @lckr/jupyterlab_variableinspector@0.3.0 \
-    @ryantam626/jupyterlab_code_formatter@1.0.3 \
+FROM builder AS jupyter-extender
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash && \
+    echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+    apt-get -y -q install nodejs
+RUN /venv/bin/pip install \
+    jupyterlab==2.0.1 \
+    ipywidgets==7.5.1 \
+    jupyterlab_code_formatter==1.2.2
+RUN /venv/bin/jupyter labextension install \
+    @jupyter-widgets/jupyterlab-manager@2.0 \
+    @jupyterlab/toc@3.0.0 \
+    @ijmbarr/jupyterlab_spellchecker@0.1.6 \
+    @ryantam626/jupyterlab_code_formatter@1.2.2 \
     --no-build
+RUN /venv/bin/jupyter serverextension enable --py jupyterlab_code_formatter
+RUN /venv/bin/jupyter lab build
+COPY ./overrides.json /venv/share/jupyter/lab/settings/
+COPY ./jupyter_notebook_config.json /root/.jupyter/
 
-# Autoformatter (commands need to be in correct order)
-RUN jupyter serverextension enable --py jupyterlab_code_formatter
-
-# Rebuild Jupyter lab
-RUN jupyter lab build
-
-# Config files
-COPY --chown=jovyan:users home /home/jovyan/
-
-# Cleanup 
-# - /work was only needed for backward-compatibility
-RUN rm -rf /home/jovyan/work && \
-    conda clean --all --force-pkgs-dirs --yes && \
-    npm --version \
-    npm cache clean --force
+FROM jupyter-extender
+ADD ./home /home
+EXPOSE 8888
+ENTRYPOINT ["/venv/bin/jupyter", "lab", "--ip=0.0.0.0", "--notebook-dir=/home", "--port=8888", "--allow-root"]
+LABEL name={NAME}
+LABEL version={VERSION}
