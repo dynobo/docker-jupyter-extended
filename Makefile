@@ -24,7 +24,7 @@ build:
 
 run:
 	@echo "Starting $(IMAGE):$(TAG):\n"
-	@docker run $(IMAGE):$(TAG)
+	@docker run --rm -it -p 8888:8888/tcp $(IMAGE):$(TAG)
 
 push: build
 	@echo "\n${BLUE}Pushing image to GitHub Docker Registry...${NC}\n"
