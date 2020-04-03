@@ -10,6 +10,8 @@
 
 I use this image to jump-start data-related notebooks for experimental and educational purposes.
 
+**Not meant for productive use! Jupyter lab runs as root inside docker!**
+
 Built from official [`python:3.7-slim`](https://hub.docker.com/_/python/) base image, extended by the following packages:
 
 ## JupyterLab Extensions
@@ -24,6 +26,9 @@ Built from official [`python:3.7-slim`](https://hub.docker.com/_/python/) base i
 - `black` (Formatter)
 
 ## Build and run with Docker
+
+- Open in Browser: http://127.0.0.1:8888
+- Password is: `notebooks`
 
 ## Development
 
